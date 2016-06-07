@@ -18,46 +18,35 @@
 
 -(FISTicTacToePosition)nextPlay
 {
-   
-    if ([self.game canPlayAtColumn:0 row:0]) {
-        
-        return FISTicTacToePositionMake(0, 0);
-        
-    } else if ([self.game canPlayAtColumn:0 row:1]) {
-        
-        return FISTicTacToePositionMake(0, 1);
+    NSUInteger column;
+    NSUInteger row;
     
-    } else if ([self.game canPlayAtColumn:0 row:2]) {
+    do {
         
-        return FISTicTacToePositionMake(0, 2);
+        column = arc4random_uniform(3);
+        row = arc4random_uniform(3);
         
-    } else if ([self.game canPlayAtColumn:1 row:0]) {
-        
-        return FISTicTacToePositionMake(1, 0);
-        
-    } else if ([self.game canPlayAtColumn:1 row:1]) {
-        
-        return FISTicTacToePositionMake(1, 1);
-        
-    } else if ([self.game canPlayAtColumn:1 row:2]) {
-        
-        return FISTicTacToePositionMake(1, 2);
-        
-    } else if ([self.game canPlayAtColumn:2 row:0]) {
-        
-        return FISTicTacToePositionMake(2, 0);
-        
-    } else if ([self.game canPlayAtColumn:2 row:1]) {
-        
-        return FISTicTacToePositionMake(2, 1);
-        
-    } else if ([self.game canPlayAtColumn:2 row:2]) {
-        
-        return FISTicTacToePositionMake(2, 2);
-        
-    }
-
-   
+    } while (![self.game canPlayAtColumn:column row:row]);
+    
+    return FISTicTacToePositionMake(column, row);
+    
+    /*   for (NSUInteger c = 0; c < [self.game.board count]; c++) {
+     for (NSUInteger r = 0; r < [self.game.board count]; r++) {
+     
+     if ([self.game canPlayAtColumn:c row:r]) {
+     
+     
+     
+     return FISTicTacToePositionMake(c, r);
+     
+     }
+     
+     }
+     
+     }
+     */
+    
+    //Going to
 }
 
 @end
